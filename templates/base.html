@@ -80,29 +80,12 @@
 
                     <!-- Navigation -->
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            {% if 'dashboard' in request.path %}
-                                <a class="nav-link active" href="{% url 'dashboard' %}">
-                                    <i class="fe fe-home"></i> Dashboards
-                                </a>
-                            {% else %}
-                                <a class="nav-link" href="{% url 'dashboard' %}">
-                                    <i class="fe fe-home"></i> Dashboards
-                                </a>
-                            {% endif %}
-
-
-                        </li>
-                        <li class="nav-item d-md-none">
-                            <a class="nav-link" data-bs-toggle="offcanvas" href="#sidebarOffcanvasActivity" aria-contrtols="sidebarOffcanvasActivity">
-                                <span class="fe fe-bell"></span> Notifications
-                            </a>
-                        </li>
+                        {% block nav %}
+                        {% endblock %}
                     </ul>
 
                     <!-- Push content down -->
                     <div class="mt-auto"></div>
-
 
                     <!-- User (md) -->
                     <div class="navbar-user d-none d-md-flex" id="sidebarUser">
