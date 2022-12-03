@@ -38,81 +38,25 @@
                     <img src="{% static 'theme/img/logo.svg' %}" class="navbar-brand-img mx-auto" alt="...">
                 </a>
 
-                <!-- User (xs) -->
-                <div class="navbar-user d-md-none">
-
-                    <!-- Dropdown -->
-                    <div class="dropdown">
-
-                        <!-- Toggle -->
-                        <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <div class="avatar avatar-sm avatar-online">
-                                <img src="{% static 'theme/img/avatars/profiles/avatar-1.jpg' %}" class="avatar-img rounded-circle"
-                                     alt="...">
-                            </div>
-                        </a>
-
-                        <!-- Menu -->
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarIcon">
-                            <a href="" class="dropdown-item">Profile</a>
-                            <a href="" class="dropdown-item">Settings</a>
-                            <hr class="dropdown-divider">
-                            <a href="" class="dropdown-item">Logout</a>
-                        </div>
-
-                    </div>
-
-                </div>
-
                 <!-- Collapse -->
                 <div class="collapse navbar-collapse" id="sidebarCollapse">
 
-                    <!-- Form -->
-                    <form class="mt-4 mb-3 d-md-none">
-                        <div class="input-group input-group-rounded input-group-merge input-group-reverse">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <div class="input-group-text">
-                                <span class="fe fe-search"></span>
-                            </div>
-                        </div>
-                    </form>
-
                     <!-- Navigation -->
                     <ul class="navbar-nav">
-                        {% block nav %}
-                        {% endblock %}
+                        {% if 'dashboard' in request.path %}
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'dashboard' %}">
+                                    <i class="fe fe-home"></i> Dashboards
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'dashboard' %}">
+                                    <i class="fe fe-home"></i> Dashboards
+                                </a>
+                            </li>
+                        {% endif %}
                     </ul>
-
-                    <!-- Push content down -->
-                    <div class="mt-auto"></div>
-
-                    <!-- User (md) -->
-                    <div class="navbar-user d-none d-md-flex" id="sidebarUser">
-
-                        <!-- Dropup -->
-                        <div class="dropup">
-
-                            <!-- Toggle -->
-                            <a href="#" id="sidebarIconCopy" class="dropdown-toggle" role="button"
-                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="avatar avatar-sm avatar-online">
-                                    <img src="{% static 'theme/img/avatars/profiles/avatar-1.jpg' %}"
-                                         class="avatar-img rounded-circle" alt="...">
-                                </div>
-                            </a>
-
-                            <!-- Menu -->
-                            <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-                                <a href="" class="dropdown-item">Profile</a>
-                                <a href="" class="dropdown-item">Settings</a>
-                                <hr class="dropdown-divider">
-                                <a href="" class="dropdown-item">Logout</a>
-                            </div>
-
-                        </div>
-
-                    </div>
 
                 </div> <!-- / .navbar-collapse -->
 
@@ -142,14 +86,20 @@
                                 </h1>
 
                             </div>
+                            <div class="col-auto">
+                            {% block header_button %}
+                            {% endblock %}
+                            </div>
                         </div> <!-- / .row -->
                     </div> <!-- / .header-body -->
 
                 </div>
             </div> <!-- / .header -->
+            <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+            </div>
         </div>
-        {% block content %}
-        {% endblock %}
         <script src="{% static 'theme/js/theme.bundle.js' %}"></script>
         <script src="{% static 'theme/js/vendor.bundle.js' %}"></script>
     </body>
