@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authenticate',
+    'dashboard'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates',
-                 BASE_DIR / 'authenticate/template/authenticate']
+                 BASE_DIR / 'authenticate/template/authenticate',
+                 BASE_DIR / 'dashboard/templates/dashboard']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -118,7 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/theme/'
+STATIC_URL = 'static/'
+STATICFILES_DIRS = ['static/']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

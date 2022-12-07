@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,10 +13,10 @@
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
 
     <!-- Libs CSS -->
-    <link rel="stylesheet" href="./assets/css/libs.bundle.css" />
+    <link rel="stylesheet" href="{% static 'theme/css/libs.bundle.css' %}" />
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
+    <link rel="stylesheet" href="{% static 'theme/css/theme.bundle.css' %}" />
 
     <!-- Title -->
     <title>Dashkit</title>
@@ -121,10 +122,10 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
     <!-- Vendor JS -->
-    <script src="./assets/js/vendor.bundle.js"></script>
+    <script src="{% static 'theme/js/vendor.bundle.js' %}"></script>
 
     <!-- Theme JS -->
-    <script src="./assets/js/theme.bundle.js"></script>
+    <script src="{% static 'theme/js/theme.bundle.js' %}"></script>
 
   </body>
 </html>
