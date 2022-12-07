@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import authenticate.views
 import dashboard.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', dashboard.views.dashboard, name="dashboard"),
+    path('', authenticate.views.SignupPageView.as_view(), name="signup"),
+    path('signin/', authenticate.views.SigninPageView.as_view(), name="signin"),
+    path('signup/', authenticate.views.SignupPageView.as_view(), name="signup"),
     path('dashboard/', dashboard.views.dashboard, name="dashboard")
 ]
