@@ -44,4 +44,4 @@ def signup_page(request):
 
 def signout_user(request):
     logout(request)
-    return redirect('accueil')
+    return redirect('dashboard')
