@@ -1,17 +1,14 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
 from django.views.generic import View
-from . import forms
 from recyclage import settings
+from . import forms
 
 # Create your views here.
 
 
 class SigninPageView(View):
-    template_name = 'signin.html'
+    template_name = 'authenticate/signin.html'
     form_class = forms.SignInForm
 
     def get(self, request):
@@ -33,28 +30,18 @@ class SigninPageView(View):
         return render(request, self.template_name, context={'form': form, 'message': message})
 
 
-class SignupPageView(View):
-    template_name = 'signup.html'
-    form_class = forms.SignUpForm
-
-    def get(self, request):
-        print(request)
-        form = self.form_class()
-        print(form)
-        message = ''
-        return render(request, self.template_name, context={'form': form, 'message': message})
-
-    def post(self, request):
-        print(request)
-        form = forms.SignUpForm(request.POST)
+def signup_page(request):
+    form = forms.SignupForm()
+    if request.method == 'POST':
+        form = forms.SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
+            # auto-login user
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
-        message = ''
-        return render(request, self.template_name, context={'form': form, 'message': message})
+    return render(request, 'authenticate/signup.html', context={'form': form})
 
 
 def signout_user(request):
     logout(request)
-    return redirect('signin')
+    return redirect('accueil')
