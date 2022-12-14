@@ -58,7 +58,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates',
                  BASE_DIR / 'authenticate/template/authenticate',
-                 BASE_DIR / 'dashboard/templates/dashboard']
+                 BASE_DIR / 'dashboard/templates/dashboard',
+                 BASE_DIR / 'profile/templates/profile']
         ,
         'APP_DIRS': True,
         'OPTIONS': {

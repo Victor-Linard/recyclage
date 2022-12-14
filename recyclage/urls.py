@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path
 import authenticate.views
 import dashboard.views
+import profile.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signin/', authenticate.views.SigninPageView.as_view(), name="signin"),
     path('signup/', authenticate.views.SignupPageView.as_view(), name="signup"),
     path('dashboard/', dashboard.views.dashboard, name="dashboard"),
-    path('', dashboard.views.dashboard, name="dashboard")
+    path('', dashboard.views.dashboard, name="dashboard"),
+    path('general/', profile.views.general, name="general"),
+    path('security/', profile.views.security, name="security"),
+    path('avatar/', profile.views.avatar, name="avatar")
 ]
